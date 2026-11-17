@@ -1,6 +1,20 @@
+---
+title: Vision GPT2 Captioner
+emoji: 🖼️
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: 5.28.0
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # Vision-GPT2-Captioner
 
 Vision-GPT2-Captioner is an image captioning application that combines a Vision Transformer (ViT) with GPT-2 to generate captions for uploaded images. The model leverages the strengths of both vision and language models to produce descriptive captions.
+
+**Live demo:** https://thompsonmoe-vision-gpt2-captioner.hf.space
 
 ## Features
 
@@ -23,7 +37,7 @@ Vision-GPT2-Captioner is an image captioning application that combines a Vision 
 
 3. Download Pretrained Model
 
-   The pretrained model weights (`captioner.pt`) are required to run the application. You can download the file from the [Releases](https://github.com/thompson129/image-captioning-project/releases) section of this repository.
+   The pretrained model weights (`captioner.pt`) are required to run the application. You can download the file from the [Releases](https://github.com/thompson129/image-captioning-project/releases) section of this repository. The half-precision weights used by the live demo are also available from the [Hugging Face Space](https://huggingface.co/spaces/thompsonmoe/vision-gpt2-captioner/tree/main).
 
    After downloading, place the `captioner.pt` file in the root directory of the project (same directory as `app.py`).
    
