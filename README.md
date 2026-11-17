@@ -26,7 +26,7 @@ Vision-GPT2-Captioner is an image captioning application that combines a Vision 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/thompson129/image-captioning-project.git
+   git clone https://github.com/thawzinmoemyint/image-captioning-project.git
    cd image-captioning-project
    ```
 
@@ -37,7 +37,7 @@ Vision-GPT2-Captioner is an image captioning application that combines a Vision 
 
 3. Download Pretrained Model
 
-   The pretrained model weights (`captioner.pt`) are required to run the application. You can download the file from the [Releases](https://github.com/thompson129/image-captioning-project/releases) section of this repository. The half-precision weights used by the live demo are also available from the [Hugging Face Space](https://huggingface.co/spaces/thompsonmoe/vision-gpt2-captioner/tree/main).
+   The pretrained model weights (`captioner.pt`) are required to run the application. You can download the file from the [Releases](https://github.com/thawzinmoemyint/image-captioning-project/releases) section of this repository. The half-precision weights used by the live demo are also available from the [Hugging Face Space](https://huggingface.co/spaces/thompsonmoe/vision-gpt2-captioner/tree/main).
 
    After downloading, place the `captioner.pt` file in the root directory of the project (same directory as `app.py`).
    
