@@ -1,15 +1,3 @@
----
-title: Vision GPT2 Captioner
-emoji: 🖼️
-colorFrom: blue
-colorTo: purple
-sdk: gradio
-sdk_version: 5.28.0
-app_file: app.py
-pinned: false
-license: mit
----
-
 # Vision-GPT2-Captioner
 
 Vision-GPT2-Captioner is an image captioning application that combines a Vision Transformer (ViT) with GPT-2 to generate captions for uploaded images. The model leverages the strengths of both vision and language models to produce descriptive captions.
