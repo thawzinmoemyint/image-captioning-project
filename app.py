@@ -9,12 +9,23 @@ from model import VisionGPT2Model
 from transformers import GPT2TokenizerFast
 from config import config
 
+# ZeroGPU support: on Hugging Face ZeroGPU hardware, `spaces.GPU` attaches a GPU
+# for the duration of each call. Elsewhere (local / CPU) it is a no-op.
+try:
+    import spaces
+    gpu = spaces.GPU
+except ImportError:
+    def gpu(fn):
+        return fn
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
 # Load model
 def load_model():
     model = VisionGPT2Model(config)
     model.load_state_dict(torch.load("captioner.pt", map_location="cpu"))
     model.eval()
-    return model
+    return model.to(device)
 
 model = load_model()
 tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
@@ -28,10 +39,11 @@ transform = transforms.Compose([
 ])
 
 # Inference function
+@gpu
 def generate_caption(image):
     image = image.convert("RGB")
-    image_tensor = transform(image).unsqueeze(0)
-    sequence = torch.ones(1, 1).long() * tokenizer.bos_token_id
+    image_tensor = transform(image).unsqueeze(0).to(device)
+    sequence = (torch.ones(1, 1).long() * tokenizer.bos_token_id).to(device)
     
     with torch.no_grad():
         caption_ids = model.generate(

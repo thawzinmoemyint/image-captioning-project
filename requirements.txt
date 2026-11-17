@@ -4,3 +4,5 @@ transformers
 gradio
 numpy
 pillow
+torchvision
+spaces
