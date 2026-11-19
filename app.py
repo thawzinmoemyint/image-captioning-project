@@ -23,7 +23,14 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 # Load model
 def load_model():
     model = VisionGPT2Model(config)
-    model.load_state_dict(torch.load("captioner.pt", map_location="cpu"))
+    state_dict = torch.load("captioner.pt", map_location="cpu", weights_only=True)
+    # Some checkpoints omit the causal attention masks (`*.attn.mask`); those are
+    # fixed buffers the model already builds in __init__, so they may be absent.
+    # Anything else missing or unexpected is a real mismatch.
+    missing, unexpected = model.load_state_dict(state_dict, strict=False)
+    missing = [k for k in missing if not k.endswith(".attn.mask")]
+    if missing or unexpected:
+        raise RuntimeError(f"captioner.pt does not match the model: missing={missing}, unexpected={unexpected}")
     model.eval()
     return model.to(device)
 

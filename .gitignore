@@ -1,5 +1,5 @@
 # Ignore model weights
-captioner.pt
+*.pt
 
 # Ignore Gradio flagged data
 .gradio/
